@@ -1,0 +1,218 @@
+% ============================================================
+%  PROFESSIONAL CV TEMPLATE
+%  Suitable for: Working professionals, industry job seekers
+%
+%  LaTeX concepts covered:
+%    minipage (two-column layout), \textsc, \noindent,
+%    \vspace, \hspace, enumerate, tabular, \rule,
+%    \begin{flushright}, font size commands (\large, \small)
+%
+%  Instructions:
+%    1. Replace all placeholder text with your own information.
+%    2. Delete any sections you do not need.
+%    3. Click Recompile (or press Ctrl+Enter) to update the PDF.
+% ============================================================
+
+% ------ DOCUMENT CLASS & PACKAGES ------
+\documentclass[10pt, a4paper]{article}
+
+\usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[hidelinks]{hyperref}
+
+% enumitem lets you customise list spacing and labels.
+\usepackage{enumitem}
+
+% Remove paragraph indentation globally.
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% ------ REUSABLE SECTION COMMAND ------
+% \rule{width}{height} draws a filled rectangle — used here as a divider line.
+\newcommand{\prosection}[1]{%
+  \vspace{10pt}%
+  \noindent{\large \textsc{#1}}%   % \textsc = Small Capitals
+  \vspace{3pt}\\%
+  \noindent\rule{\textwidth}{0.4pt}%   % a thin full-width horizontal rule
+  \vspace{4pt}%
+}
+
+% ------ ENTRY COMMAND ------
+% Takes 4 arguments: {Job Title}{Company}{Location}{Dates}
+\newcommand{\entry}[4]{%
+  \noindent%
+  \textbf{#1} \hfill \textit{#4} \\%     title + date
+  \textit{#2} \hfill \small #3%          company + location
+  \vspace{2pt}%
+}
+
+% ============================================================
+%  DOCUMENT BEGINS HERE
+% ============================================================
+\begin{document}
+
+% ------ HEADER ------
+% \begin{center} centres the block.
+\begin{center}
+  {\Huge \textbf{Your Full Name}}\\[6pt]
+
+  % \small reduces the font size one step below the base size.
+  {\small
+    [City, Country]
+    \quad $|$ \quad
+    \href{mailto:your.email@example.com}{your.email@example.com}
+    \quad $|$ \quad
+    \href{https://linkedin.com/in/yourprofile}{linkedin.com/in/yourprofile}
+    \quad $|$ \quad
+    [+1 000 000 0000]
+  }
+\end{center}
+
+% A thin rule below the header for visual separation.
+\vspace{4pt}
+\noindent\rule{\textwidth}{0.8pt}
+\vspace{4pt}
+
+
+% ------ PROFESSIONAL SUMMARY ------
+\prosection{Professional Summary}
+
+[Write 2–3 sentences summarising your experience, strengths, and what you bring
+to a new role. For example: Results-driven software engineer with 5+ years
+building scalable web services. Experienced in agile teams and cross-functional
+collaboration. Seeking a senior engineering role in a product-focused company.]
+
+\vspace{8pt}
+
+
+% ------ TWO-COLUMN BODY ------
+% minipage creates a box of a fixed width.
+% Two minipages side by side = a two-column layout.
+% [t] means align the tops of both columns.
+% We use 0.63\textwidth for the main column and 0.33\textwidth for the sidebar.
+% The gap between them is roughly 0.04\textwidth.
+
+\noindent
+\begin{minipage}[t]{0.63\textwidth}
+
+  % === MAIN COLUMN: Experience + Education ===
+
+  \prosection{Work Experience}
+
+  \entry{Senior [Job Title]}{[Company Name]}{[City, Country]}{[Month Year] -- Present}
+
+  % itemize with customised left margin (from enumitem package).
+  \begin{itemize}[leftmargin=*, itemsep=1pt, topsep=4pt]
+    \item [Describe your most impactful achievement — include a number if possible.]
+    \item [Describe a technical contribution or project you led.]
+    \item [Describe collaboration, mentoring, or process improvement.]
+  \end{itemize}
+
+  \vspace{8pt}
+
+  \entry{[Job Title]}{[Previous Company]}{[City, Country]}{[Month Year] -- [Month Year]}
+
+  \begin{itemize}[leftmargin=*, itemsep=1pt, topsep=4pt]
+    \item [Key responsibility or achievement.]
+    \item [Another achievement — quantify if possible (e.g., "reduced build time by 30\%").]
+    \item [Describe a skill you developed or a technology you introduced.]
+  \end{itemize}
+
+  \vspace{8pt}
+
+  \entry{[Earlier Job Title]}{[Company Name]}{[City, Country]}{[Month Year] -- [Month Year]}
+
+  \begin{itemize}[leftmargin=*, itemsep=1pt, topsep=4pt]
+    \item [Key responsibility.]
+    \item [Achievement or contribution.]
+  \end{itemize}
+
+  \vspace{6pt}
+  \prosection{Education}
+
+  \textbf{[Degree Name]} in [Field] \hfill \textit{[Year]} \\
+  \textit{[University Name]}, [City, Country]
+
+  \vspace{6pt}
+
+  \textbf{[Second Degree or Diploma]} \hfill \textit{[Year]} \\
+  \textit{[Institution]}, [City, Country]
+
+\end{minipage}
+%
+% \hspace fills the gap between the two columns.
+\hspace{0.04\textwidth}
+%
+\begin{minipage}[t]{0.33\textwidth}
+
+  % === SIDEBAR COLUMN: Skills + Certifications + Languages ===
+
+  \prosection{Technical Skills}
+
+  % tabular lets you align content in columns.
+  % l = left-aligned column, p{...} = a paragraph column with fixed width.
+  \begin{tabular}{@{}p{2.5cm} p{3.2cm}}
+    \textbf{Languages}   & Python, SQL, Java \\[2pt]
+    \textbf{Frameworks}  & [Framework 1], [Framework 2] \\[2pt]
+    \textbf{Cloud}       & AWS, GCP \\[2pt]
+    \textbf{Tools}       & Git, Docker, Jira \\[2pt]
+  \end{tabular}
+
+  \vspace{10pt}
+  \prosection{Core Competencies}
+
+  % enumerate creates a numbered list. Here used for ranked skills.
+  \begin{enumerate}[leftmargin=*, itemsep=1pt, topsep=2pt]
+    \item [Skill or strength, e.g., System Design]
+    \item [Skill, e.g., Stakeholder Communication]
+    \item [Skill, e.g., Agile / Scrum]
+    \item [Skill, e.g., Data Analysis]
+    \item [Skill, e.g., Technical Writing]
+  \end{enumerate}
+
+  \vspace{10pt}
+  \prosection{Certifications}
+
+  \begin{itemize}[leftmargin=*, itemsep=2pt, topsep=2pt]
+    \item \textbf{[Certification Name]} \\
+          \small [Issuing Body], \textit{[Year]}
+    \item \textbf{[Certification Name]} \\
+          \small [Issuing Body], \textit{[Year]}
+  \end{itemize}
+
+  \vspace{10pt}
+  \prosection{Languages}
+
+  \begin{itemize}[leftmargin=*, itemsep=2pt, topsep=2pt]
+    \item English --- \textit{Fluent}
+    \item [Language] --- \textit{Native}
+    \item [Language] --- \textit{Intermediate}
+  \end{itemize}
+
+  \vspace{10pt}
+  \prosection{Interests}
+
+  [Interest 1], [Interest 2], [Interest 3]
+
+\end{minipage}
+
+
+% ------ PROJECTS (optional) ------
+\prosection{Selected Projects}
+
+\noindent
+\textbf{[Project Name]} \hfill \href{https://github.com/you/project}{github.com/you/project} \\
+\small [One or two sentences describing what the project does, the technology used,
+and any notable outcome — e.g., number of users, stars on GitHub, or problem solved.]
+
+\vspace{6pt}
+
+\noindent
+\textbf{[Project Name]} \hfill \href{https://yourproject.com}{yourproject.com} \\
+\small [Description of second project.]
+
+% ============================================================
+%  DOCUMENT ENDS HERE
+% ============================================================
+\end{document}

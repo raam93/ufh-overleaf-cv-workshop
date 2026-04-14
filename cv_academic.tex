@@ -1,0 +1,200 @@
+% ============================================================
+%  ACADEMIC CV TEMPLATE
+%  Suitable for: PhD students, researchers, academics
+%
+%  LaTeX concepts covered:
+%    \documentclass, \usepackage, geometry, fontenc, inputenc,
+%    \section*, \textbf, \textit, \hfill, \hrule, \vspace,
+%    itemize (nested), hyperref, \href, \url, \noindent
+%
+%  Instructions:
+%    1. Replace all placeholder text with your own information.
+%    2. Delete any sections you do not need.
+%    3. Click Recompile (or press Ctrl+Enter) to update the PDF.
+% ============================================================
+
+% ------ DOCUMENT CLASS & PACKAGES ------
+% \documentclass sets the overall type and base font size.
+\documentclass[11pt, a4paper]{article}
+
+% geometry lets you control the page margins precisely.
+\usepackage[top=2cm, bottom=2cm, left=2.2cm, right=2.2cm]{geometry}
+
+% fontenc and inputenc ensure accented characters print correctly.
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% hyperref turns URLs and email addresses into clickable links in the PDF.
+% hidelinks removes the coloured boxes around links.
+\usepackage[hidelinks]{hyperref}
+
+% Remove paragraph indentation and add a small gap between paragraphs.
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+% ------ HELPER COMMAND ------
+% This defines a reusable command for section headings with a horizontal rule.
+% \newcommand{\cvsection}[1] means "one argument, referred to as #1".
+\newcommand{\cvsection}[1]{%
+  \vspace{10pt}%
+  {\large \textbf{#1}}%        % #1 is replaced by whatever you pass in
+  \vspace{3pt}%
+  \hrule                        % draws a full-width horizontal rule
+  \vspace{6pt}%
+}
+
+% ============================================================
+%  DOCUMENT BEGINS HERE
+% ============================================================
+\begin{document}
+
+% ------ HEADER ------
+% \begin{center} ... \end{center} centres everything inside.
+\begin{center}
+  {\LARGE \textbf{Your Full Name}}    \\[4pt]
+  % \\ starts a new line. [4pt] adds 4 points of extra space below.
+
+  Department of [Your Department]  \\
+  [University Name], [City, Country] \\[6pt]
+
+  % \href{url}{display text} makes a clickable link (from hyperref package).
+  \href{mailto:your.email@university.edu}{your.email@university.edu}
+  \quad $\cdot$ \quad               % \quad is a medium space; $\cdot$ is a bullet in math mode
+  \href{https://yourwebsite.com}{yourwebsite.com}
+  \quad $\cdot$ \quad
+  \href{https://github.com/yourusername}{github.com/yourusername}
+\end{center}
+
+\vspace{4pt}
+
+
+% ------ RESEARCH INTERESTS ------
+\cvsection{Research Interests}
+
+[Write 1–2 sentences describing your main research area and questions.
+For example: My research focuses on human–computer interaction and accessibility,
+with an emphasis on designing inclusive interfaces for users with motor impairments.]
+
+
+% ------ EDUCATION ------
+\cvsection{Education}
+
+% \textbf makes text bold. \textit makes it italic.
+% \hfill pushes the date all the way to the right margin.
+\textbf{Doctor of Philosophy in [Your Field]} \hfill \textit{Expected [Month Year]} \\
+[University Name], [City, Country] \\
+Thesis: \textit{``[Your Thesis Title]''} \\
+Supervisor: Prof.\ [Supervisor Name]
+
+\vspace{8pt}
+
+\textbf{Master of Science in [Your Field]} \hfill \textit{[Month Year]} \\
+[University Name], [City, Country] \\
+Thesis: \textit{``[Thesis Title]''} \quad GPA: [X.X / 4.0]
+
+\vspace{8pt}
+
+\textbf{Bachelor of Science in [Your Field]} \hfill \textit{[Month Year]} \\
+[University Name], [City, Country] \quad GPA: [X.X / 4.0]
+
+
+% ------ RESEARCH EXPERIENCE ------
+\cvsection{Research Experience}
+
+\textbf{Graduate Research Assistant} \hfill \textit{[Month Year] -- Present} \\
+\textit{[Lab / Group Name]}, [University Name] \\
+Supervisor: Prof.\ [Name]
+
+% itemize creates a bullet list. Each \item is one bullet point.
+\begin{itemize}
+  \setlength{\itemsep}{2pt}   % reduces space between items
+  \item [Describe your main research contribution or project in one sentence.]
+  \item [Describe a method, dataset, or tool you developed or used.]
+  \item [Mention any collaboration, publication outcome, or result.]
+\end{itemize}
+
+\vspace{8pt}
+
+\textbf{Research Intern} \hfill \textit{[Month Year] -- [Month Year]} \\
+\textit{[Organisation / Lab]}, [City, Country]
+
+\begin{itemize}
+  \setlength{\itemsep}{2pt}
+  \item [Describe the project you worked on.]
+  \item [Describe your contribution and any results.]
+\end{itemize}
+
+
+% ------ PUBLICATIONS ------
+\cvsection{Publications}
+
+% enumerate creates a numbered list.
+\begin{enumerate}
+  \setlength{\itemsep}{4pt}
+
+  \item \textbf{Your Name}, Co-Author Name, and Co-Author Name.
+        ``\textit{[Title of Your Paper]}.''
+        In \textit{[Conference or Journal Name]}, [Year].
+        \href{https://doi.org/xxxxx}{doi:xxxxx}
+
+  \item \textbf{Your Name} and Co-Author Name.
+        ``\textit{[Title of Second Paper]}.''
+        In \textit{[Journal Name]}, Vol.\ [X], No.\ [Y], [Year].
+
+\end{enumerate}
+
+
+% ------ TEACHING ------
+\cvsection{Teaching}
+
+\textbf{Teaching Assistant} --- [Course Name] ([Course Code]) \hfill \textit{[Year]} \\
+[University Name]
+
+\begin{itemize}
+  \setlength{\itemsep}{2pt}
+  \item Led weekly tutorial sessions of [N] students.
+  \item Graded assignments and provided written feedback.
+\end{itemize}
+
+
+% ------ AWARDS & HONOURS ------
+\cvsection{Awards \& Honours}
+
+% You can also use itemize for a simple list without descriptions.
+\begin{itemize}
+  \setlength{\itemsep}{2pt}
+  \item \textbf{[Award Name]} \hfill \textit{[Year]}
+  \item \textbf{[Scholarship Name]}, [Awarding Body] \hfill \textit{[Year]}
+  \item \textbf{[Fellowship Name]} \hfill \textit{[Year]}
+\end{itemize}
+
+
+% ------ SKILLS ------
+\cvsection{Skills}
+
+% Nested itemize: an itemize inside another itemize creates a sub-list.
+\begin{itemize}
+  \setlength{\itemsep}{3pt}
+
+  \item \textbf{Programming:}
+    \begin{itemize}
+      \item Proficient: Python, R, MATLAB
+      \item Familiar: C++, JavaScript
+    \end{itemize}
+
+  \item \textbf{Tools \& Frameworks:} PyTorch, TensorFlow, Git, Docker, \LaTeX
+
+  \item \textbf{Languages:} English (fluent), [Other Language] (native)
+
+\end{itemize}
+
+
+% ------ REFERENCES ------
+\cvsection{References}
+
+Available upon request.
+
+% ============================================================
+%  DOCUMENT ENDS HERE
+% ============================================================
+\end{document}

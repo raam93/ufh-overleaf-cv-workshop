@@ -1,0 +1,142 @@
+% ============================================================
+%  ACADEMIC COVER LETTER TEMPLATE
+%  Suitable for: Academic positions, fellowships, graduate school
+%
+%  LaTeX concepts covered:
+%    \documentclass{letter}  --- LaTeX's built-in letter class
+%    \address{}              --- your return address
+%    \signature{}            --- your sign-off name
+%    \begin{letter}{addr}    --- recipient address
+%    \opening{}              --- salutation (Dear ...)
+%    \closing{}              --- closing phrase (Sincerely, ...)
+%    \today                  --- inserts today's date automatically
+%    \ps{}                   --- postscript
+%
+%  The letter class handles all spacing and layout conventions
+%  automatically. You focus entirely on the content.
+%
+%  Instructions:
+%    1. Replace ALL placeholder text with your own information.
+%    2. Keep each paragraph focused: one idea per paragraph.
+%    3. Click Recompile (or Ctrl+Enter) to preview the PDF.
+% ============================================================
+
+% ------ DOCUMENT CLASS ------
+% The "letter" class is specifically designed for formal correspondence.
+% It is different from "article" — it provides letter-specific commands.
+\documentclass[12pt]{letter}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[top=2.5cm, bottom=2cm, left=3cm, right=3cm]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+% \longindentation controls how far the closing/signature is indented from the left.
+% Setting it to 0pt aligns closing to the left margin (a common academic style).
+\longindentation=0pt
+
+
+% ------ YOUR RETURN ADDRESS ------
+% \address sets the sender's address printed at the top of the letter.
+% Use \\ to separate lines. Use a comma or \\ for each address line.
+\address{
+  Your Full Name \\
+  Department of [Your Department] \\
+  [University Name] \\
+  [City, Province/State, Postal Code] \\
+  \href{mailto:your.email@university.edu}{your.email@university.edu}
+}
+
+% ------ YOUR SIGNATURE ------
+% \signature sets the name that appears after the closing phrase.
+\signature{Your Full Name \\ [Your Title / PhD Candidate in X]}
+
+
+% ============================================================
+%  DOCUMENT BEGINS HERE
+% ============================================================
+\begin{document}
+
+% ------ BEGIN THE LETTER ------
+% The argument to \begin{letter}{...} is the recipient's address.
+\begin{letter}{
+  [Recipient Name] \\
+  [Title, e.g., Chair of the Search Committee] \\
+  Department of [Department Name] \\
+  [University Name] \\
+  [City, Country]
+}
+
+% \today inserts the current date automatically.
+% The letter class places it at the top, before the addresses.
+% You can replace \today with a fixed date, e.g., April 14, 2025.
+\date{\today}
+
+% ------ SALUTATION ------
+% \opening{} produces the "Dear ..." line.
+% Leave a comma at the end — it is part of the formal format.
+\opening{Dear [Professor / Dr. / Search Committee Chair's Name],}
+
+
+% ------ PARAGRAPH 1: INTRODUCTION ------
+% State who you are, what position you are applying for, and how you found it.
+I am writing to apply for the position of [Postdoctoral Researcher / Assistant
+Professor / Research Fellow] in [Field] at [University Name], as advertised on
+[Website / Journal Name]. I am currently completing my PhD in [Your Field] at
+[Your University] under the supervision of Professor [Supervisor Name], and
+I expect to defend my dissertation in [Month Year].
+
+
+% ------ PARAGRAPH 2: RESEARCH OVERVIEW ------
+% Summarise your research area and its significance in 3–4 sentences.
+My dissertation investigates [describe your research topic in plain language].
+This work addresses [describe the problem or gap in the field] by [describe
+your approach or method]. My findings demonstrate [summarise a key result or
+contribution]. This research has resulted in [X publications / presentations
+at conferences including Y].
+
+
+% ------ PARAGRAPH 3: FIT WITH THE DEPARTMENT ------
+% Explain specifically why you want this position and how you fit.
+I am drawn to [University Name] because of [specific reason — a faculty member's
+work, a lab, a department strength]. My research on [your topic] complements the
+work of Professor [Name] on [their topic], and I am excited by the possibility of
+[describe potential collaboration or shared direction].
+
+
+% ------ PARAGRAPH 4: TEACHING ------
+% Briefly mention your teaching experience and philosophy.
+I have teaching experience from my role as a Teaching Assistant for
+[Course Name] at [University], where I [briefly describe responsibility].
+I am prepared to teach courses in [Area 1] and [Area 2], and I am eager
+to develop new courses in [emerging area].
+
+
+% ------ PARAGRAPH 5: CLOSING ------
+I have enclosed my curriculum vitae, research statement, teaching statement,
+and the names and contact details of three referees. I welcome the opportunity
+to discuss my work with you. Thank you sincerely for your time and consideration.
+
+
+% ------ CLOSING ------
+% \closing{} produces the sign-off phrase. Your \signature{} text appears below it.
+\closing{Sincerely,}
+
+
+% ------ ENCLOSURES ------
+% \encl{} lists the documents enclosed with the letter.
+\encl{Curriculum Vitae \\
+      Research Statement \\
+      Teaching Statement \\
+      Contact information for three referees}
+
+% ------ POSTSCRIPT (optional) ------
+% \ps{} adds a postscript after the signature. Remove if not needed.
+% \ps{Please feel free to contact my primary referee, Prof.\ [Name], at [email].}
+
+\end{letter}
+
+% ============================================================
+%  DOCUMENT ENDS HERE
+% ============================================================
+\end{document}

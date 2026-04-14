@@ -1,0 +1,155 @@
+% ============================================================
+%  PROFESSIONAL COVER LETTER TEMPLATE
+%  Suitable for: Industry jobs, internships, general applications
+%
+%  LaTeX concepts covered:
+%    \setlength --- manually set spacing lengths
+%    \parskip, \parindent --- paragraph spacing control
+%    \raggedright --- left-aligned (ragged right) text
+%    \begin{flushright} --- right-aligned block
+%    \begin{flushleft}  --- left-aligned block
+%    \vspace{} --- add vertical space
+%    \hspace{} --- add horizontal space
+%    \medskip, \bigskip --- preset vertical gaps
+%
+%  Unlike the letter class, this template gives you full control
+%  over every spacing decision — which is how most manual
+%  letter formatting in LaTeX works.
+%
+%  Instructions:
+%    1. Replace ALL placeholder text with your own information.
+%    2. Click Recompile (or Ctrl+Enter) to preview the PDF.
+% ============================================================
+
+% ------ DOCUMENT CLASS & PACKAGES ------
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[top=2.2cm, bottom=2.2cm, left=3cm, right=3cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[hidelinks]{hyperref}
+
+% ------ SPACING SETTINGS ------
+% \setlength changes the value of a length variable.
+% \parindent controls how much paragraphs are indented.
+% Setting it to 0pt means no indentation — standard for letters.
+\setlength{\parindent}{0pt}
+
+% \parskip controls the extra space between paragraphs.
+% 10pt means a gap of 10 points appears between paragraphs.
+\setlength{\parskip}{10pt}
+
+% ------ PAGE STYLE ------
+% pagestyle{empty} removes the page number from the footer.
+\pagestyle{empty}
+
+% ============================================================
+%  DOCUMENT BEGINS HERE
+% ============================================================
+\begin{document}
+
+% \raggedright means text is aligned to the left margin but the right
+% edge is ragged (uneven) — which is the standard style for letters.
+% Without \raggedright, LaTeX would justify text on both sides.
+\raggedright
+
+
+% ------ YOUR ADDRESS (right-aligned block) ------
+% \begin{flushright} ... \end{flushright} right-aligns the content inside.
+\begin{flushright}
+  \textbf{Your Full Name} \\
+  [Street Address] \\
+  [City, Province, Postal Code] \\
+  [Country] \\
+  \href{mailto:your.email@example.com}{your.email@example.com} \\
+  [+1 000 000 0000]
+\end{flushright}
+
+% \bigskip adds a large vertical gap (roughly 12pt by default).
+\bigskip
+
+% ------ DATE ------
+% \today inserts today's date automatically.
+% You can replace it with a fixed date like: April 14, 2025
+\today
+
+\bigskip
+
+
+% ------ RECIPIENT ADDRESS ------
+% This block is left-aligned (default after \raggedright).
+[Hiring Manager's Name] \\
+[Their Title] \\
+[Company Name] \\
+[Street Address] \\
+[City, Province, Postal Code]
+
+\bigskip
+
+
+% ------ SUBJECT LINE (optional) ------
+% A brief reference line — common in professional letters.
+\textbf{Re: Application for [Job Title] --- [Job Reference Number, if any]}
+
+\medskip   % \medskip adds a medium-sized vertical gap (roughly 6pt)
+
+
+% ------ SALUTATION ------
+Dear [Hiring Manager's Name / Hiring Team],
+
+\medskip
+
+
+% ------ PARAGRAPH 1: OPENING ------
+% State the role, where you saw it, and why you are interested.
+I am writing to express my interest in the [Job Title] position at [Company Name],
+as advertised on [Job Board / Website] on [Date]. With [X years] of experience in
+[your field], I am confident that my background in [Key Skill 1] and [Key Skill 2]
+aligns well with the requirements of this role.
+
+
+% ------ PARAGRAPH 2: YOUR VALUE ------
+% Connect your most relevant experience to the job requirements.
+In my current role as [Your Job Title] at [Your Company], I have [describe a
+major achievement, including a number if possible --- e.g., "led a team of 6
+engineers to deliver a platform serving 200,000 daily active users"]. I am
+particularly skilled in [specific technology or method], which I understand is
+central to this position. Prior to this, at [Previous Company], I [describe
+another relevant experience or achievement].
+
+
+% ------ PARAGRAPH 3: WHY THIS COMPANY ------
+% Show you have done your research. Be specific.
+I am particularly drawn to [Company Name] because of [a specific reason ---
+e.g., its commitment to open-source tools, a recent product launch, its culture,
+or its mission]. I believe my work on [a relevant project or area] would
+complement your team's direction in [specific area].
+
+
+% ------ PARAGRAPH 4: CLOSING ------
+I would welcome the opportunity to speak with you about how my experience can
+contribute to [Company Name]. I have attached my résumé for your review and
+am available at your convenience for an interview. Thank you very much for
+your time and consideration.
+
+\bigskip
+
+
+% ------ SIGN-OFF ------
+Sincerely,
+
+% \vspace{} adds a precise amount of vertical space --- here, enough room to sign.
+\vspace{32pt}
+
+\textbf{Your Full Name}
+
+\medskip
+
+% ------ ENCLOSURE LINE (optional) ------
+% Remove this line if you are not attaching a résumé separately.
+\textit{Enclosure: Résumé}
+
+% ============================================================
+%  DOCUMENT ENDS HERE
+% ============================================================
+\end{document}
