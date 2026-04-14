@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Build Beautiful CVs — Overleaf &amp; LaTeX Workshop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --ink: #0f0f0f;
+  --ink2: #3a3a3a;
+  --muted: #6b6b6b;
+  --rule: #e0ddd8;
+  --bg: #f9f7f4;
+  --card: #ffffff;
+  --accent: #1a4fff;
+  --accent-light: #eef2ff;
+  --amber: #b45309;
+  --amber-light: #fef3c7;
+  --green: #0d7a4e;
+  --green-light: #e6f5ee;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --mono: 'DM Mono', 'Courier New', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.7;
+}
+a { color: var(--accent); }
+
+/* ── HEADER ── */
+header {
+  border-bottom: 1px solid var(--rule);
+  padding: 56px 0 48px;
+  background: var(--card);
+  position: relative;
+  overflow: hidden;
+}
+header::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  background: #eef2ff;
+  z-index: 0;
+}
+.inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 28px;
+  position: relative;
+  z-index: 1;
+}
+.pill {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .06em;
+  color: var(--accent);
+  background: var(--accent-light);
+  border-radius: 99px;
+  padding: 4px 12px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+h1 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.15;
+  margin-bottom: 16px;
+  font-weight: 400;
+}
+h1 em { font-style: italic; color: var(--accent); }
+.tagline {
+  font-size: 1.05rem;
+  color: var(--ink2);
+  max-width: 540px;
+  line-height: 1.65;
+  margin-bottom: 28px;
+}
+.cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 0; }
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ink);
+  color: #e2e8f0;
+  border-radius: 10px;
+  padding: 10px 18px;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: var(--sans);
+  font-weight: 500;
+  transition: background .15s;
+}
+.btn-primary:hover { background: #1e293b; }
+.btn-primary strong { color: #fff; }
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--ink2);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 10px 18px;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: var(--sans);
+  font-weight: 500;
+  transition: border-color .15s;
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  color: var(--muted);
+  font-family: var(--mono);
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--card);
+  border-bottom: 1px solid var(--rule);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 28px;
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+nav a {
+  display: inline-block;
+  padding: 12px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color .15s, border-color .15s;
+}
+nav a:hover { color: var(--ink); border-bottom-color: var(--accent); }
+
+/* ── MAIN ── */
+main { max-width: 760px; margin: 0 auto; padding: 0 28px 80px; }
+section { padding-top: 56px; }
+.section-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+h2 {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+p { color: var(--ink2); margin-bottom: 16px; }
+p:last-child { margin-bottom: 0; }
+
+/* ── STEPS ── */
+.step {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 0 16px;
+  margin-bottom: 20px;
+  align-items: start;
+}
+.step-num {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.step-body h4 { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+.step-body p { font-size: 14px; margin-bottom: 8px; }
+.step-body p:last-child { margin-bottom: 0; }
+
+/* ── CALLOUTS ── */
+.callout {
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 16px 0;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.callout.tip { background: var(--accent-light); border-left: 3px solid var(--accent); }
+.callout.warn { background: var(--amber-light); border-left: 3px solid var(--amber); }
+.callout.go { background: var(--green-light); border-left: 3px solid var(--green); }
+.callout-icon { font-size: 15px; flex-shrink: 0; margin-top: 2px; }
+.callout p { font-size: 14px; margin: 0; }
+.callout strong { color: var(--ink); }
+
+/* ── ITEM LIST ── */
+.item-list { list-style: none; margin-top: 4px; }
+.item-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.93rem;
+  color: var(--ink2);
+}
+.item-list li:last-child { border-bottom: none; }
+.item-list li strong { display: block; margin-bottom: 2px; color: var(--ink); }
+
+/* ── CODE ── */
+code {
+  font-family: var(--mono);
+  font-size: 0.85em;
+  background: #f0ede8;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--ink);
+}
+pre {
+  background: #1e1e2e;
+  color: #cdd6f4;
+  font-family: var(--mono);
+  font-size: 13px;
+  padding: 16px 20px;
+  border-radius: 10px;
+  overflow-x: auto;
+  margin: 16px 0;
+  line-height: 1.6;
+}
+pre .comment { color: #6c7086; }
+pre .cmd { color: #89b4fa; }
+pre .arg { color: #a6e3a1; }
+pre .brace { color: #f38ba8; }
+
+/* ── TEMPLATE CARDS ── */
+.template-grid { display: grid; gap: 12px; margin-top: 8px; }
+.template-card {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 18px 20px;
+}
+.template-card h4 { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+.template-card .template-meta { font-size: 12px; color: var(--muted); font-family: var(--mono); margin-bottom: 10px; }
+.template-card p { font-size: 13.5px; color: var(--ink2); margin-bottom: 10px; }
+.template-card .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.tag {
+  font-size: 11px;
+  font-family: var(--mono);
+  background: #f0ede8;
+  color: var(--ink2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.template-card a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--accent-light);
+  background: var(--accent-light);
+  border-radius: 7px;
+  padding: 6px 12px;
+  transition: background .15s;
+}
+.template-card a:hover { background: #dce7ff; }
+
+/* ── COMMANDS TABLE ── */
+.cmd-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  margin-top: 12px;
+}
+.cmd-table th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .06em;
+  color: var(--muted);
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border-bottom: 2px solid var(--rule);
+}
+.cmd-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+.cmd-table tr:last-child td { border-bottom: none; }
+.cmd-table td:first-child { font-family: var(--mono); font-size: 12.5px; color: var(--ink); white-space: nowrap; }
+.cmd-table td:last-child { color: var(--ink2); }
+
+/* ── RESOURCE LINKS ── */
+.resource-grid { display: grid; gap: 10px; margin-top: 12px; }
+.resource-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 12px;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 12px 16px;
+  text-decoration: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+.resource-row:hover { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
+.resource-row h4 { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+.resource-row p { font-size: 12.5px; color: var(--muted); margin: 0; font-family: var(--mono); }
+.resource-arrow { font-size: 18px; color: var(--accent); flex-shrink: 0; }
+
+hr.divider { border: none; border-top: 1px solid var(--rule); margin: 40px 0 0; }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 36px 28px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 760px;
+  margin: 0 auto;
+}
+footer a { color: var(--accent); text-decoration: none; }
+
+@media (max-width: 540px) {
+  h1 { font-size: 1.75rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="inner">
+    <div class="pill">UFH Workshop · April 14 · 5:30 – 7:00 pm</div>
+    <h1>Create Beautiful CVs with <em>Overleaf</em> &amp; LaTeX</h1>
+    <p class="tagline">
+      Learn to build professional, polished résumés and cover letters using Overleaf —
+      a free browser-based tool that takes the formatting struggle out of job applications.
+      No installation. No prior LaTeX experience needed.
+    </p>
+    <div class="cta-row">
+      <a class="btn-primary" href="https://www.overleaf.com" target="_blank">
+        <strong>▶ Open Overleaf</strong>
+      </a>
+      <a class="btn-ghost" href="#templates">📄 View Templates</a>
+    </div>
+    <div class="meta">
+      <span class="meta-item">⏱ 90 minutes</span>
+      <span class="meta-item">🌐 No installation needed</span>
+      <span class="meta-item">📝 No LaTeX experience needed</span>
+    </div>
+  </div>
+</header>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="#about">About</a>
+    <a href="#why-latex">Why LaTeX?</a>
+    <a href="#overleaf">Using Overleaf</a>
+    <a href="#learn">What you'll learn</a>
+    <a href="#templates">Templates</a>
+    <a href="#commands">Commands</a>
+    <a href="#resources">Resources</a>
+  </div>
+</nav>
+
+<!-- ── MAIN ── -->
+<main>
+
+  <section id="about">
+    <div class="section-label">Background</div>
+    <h2>What is this session about?</h2>
+    <p>
+      LaTeX is a document preparation system that separates <em>content</em> from <em>formatting</em>.
+      Instead of clicking buttons to make text bold or adjust margins, you write plain text with
+      simple commands — and LaTeX handles the layout automatically, every time, without surprises.
+    </p>
+    <p>
+      This session uses <strong>Overleaf</strong>, a free website where you write LaTeX in your browser
+      and see a live PDF preview. There is nothing to install. You pick a template, fill in your information,
+      and download a job-ready PDF in minutes.
+    </p>
+    <div class="callout warn">
+      <span class="callout-icon">💡</span>
+      <p><strong>Isn't Word easier?</strong> Word is fine for short documents — but résumés are
+      tricky. Spacing shifts when you add a line, bullet alignment breaks, and the PDF looks
+      different on every computer. LaTeX produces identical output everywhere, and your formatting
+      never breaks.</p>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <section id="why-latex">
+    <div class="section-label">Motivation</div>
+    <h2>Why use LaTeX?</h2>
+    <ul class="item-list">
+      <li>
+        <strong>Consistent, professional output</strong>
+        LaTeX handles typography — spacing, hyphenation, alignment — automatically. The result
+        looks like a professionally typeset document, not a word-processed one.
+      </li>
+      <li>
+        <strong>No layout surprises</strong>
+        Adding a new bullet doesn't push your footer onto a second page. Changing your address
+        doesn't shift your entire header. The structure is controlled by your commands, not by
+        invisible formatting state.
+      </li>
+      <li>
+        <strong>Free and permanent</strong>
+        LaTeX is open-source software that has been around since 1984. Your documents will compile
+        correctly in 20 years. No subscription. No format lock-in.
+      </li>
+      <li>
+        <strong>Industry and academia both respect it</strong>
+        Engineering, computer science, economics, and all sciences expect LaTeX. Many journals and
+        PhD programs accept only LaTeX submissions. A résumé in LaTeX signals technical competence.
+      </li>
+      <li>
+        <strong>Templates make it easy to start</strong>
+        You don't need to design anything from scratch. Thousands of free, peer-reviewed templates
+        are available on Overleaf. Pick one, replace the sample text, done.
+      </li>
+    </ul>
+  </section>
+
+  <hr class="divider"/>
+
+  <section id="overleaf">
+    <div class="section-label">How it works</div>
+    <h2>Getting started with Overleaf</h2>
+    <p>Overleaf runs entirely in your browser. Follow these steps to go from zero to a compiled PDF.</p>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h4>Create a free account</h4>
+        <p>Go to <a href="https://www.overleaf.com" target="_blank">overleaf.com</a> and sign up with
+        your email address or Google account. No credit card required — the free plan is all you need
+        for this session.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h4>Browse and pick a template</h4>
+        <p>Click <strong>Templates</strong> in the top menu. Search for "CV" or "resume" or "cover letter".
+        Overleaf has hundreds of community templates. For this workshop we provide four ready-to-use
+        templates below — but feel free to explore others.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h4>Open the editor</h4>
+        <p>The Overleaf editor has two panels: the <strong>source code</strong> on the left (your .tex file)
+        and the <strong>PDF preview</strong> on the right. Click <strong>Recompile</strong> (or press
+        <code>Ctrl+Enter</code>) any time to update the preview.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h4>Fill in your information</h4>
+        <p>Find the placeholder text — usually things like <code>Your Name</code> or <code>University Name</code> —
+        and replace it with your own. You only edit the content between the commands; the formatting
+        takes care of itself.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <h4>Download your PDF</h4>
+        <p>When you're happy with the result, click the <strong>Download PDF</strong> button (the arrow icon
+        next to Recompile). Your résumé is ready to attach to any job application.</p>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <span class="callout-icon">💡</span>
+      <p><strong>Got an error?</strong> Click the <strong>Logs</strong> button next to Recompile to see what
+      went wrong. The most common mistake is a missing <code>}</code> at the end of a command. LaTeX will
+      tell you the exact line number.</p>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <section id="learn">
+    <div class="section-label">Outcomes</div>
+    <h2>What you'll learn</h2>
+    <p>LaTeX concepts appear naturally as you build the document. By the end of the session you'll
+    understand how to read, modify, and extend any template.</p>
+
+    <ul class="item-list">
+      <li>
+        <strong>Document structure</strong>
+        The <code>\documentclass</code>, <code>\usepackage</code>, <code>\begin{document}</code>, and
+        <code>\end{document}</code> commands that every LaTeX file starts with — and what each one does.
+      </li>
+      <li>
+        <strong>Text formatting</strong>
+        Make text <code>\textbf{bold}</code>, <code>\textit{italic}</code>, or
+        <code>\textsc{small caps}</code>. Control size with <code>\large</code>, <code>\small</code>,
+        and similar modifiers.
+      </li>
+      <li>
+        <strong>Sections and layout</strong>
+        Organise content with <code>\section{}</code> and <code>\subsection{}</code>. Push text to
+        the right margin with <code>\hfill</code>. Add vertical space with <code>\vspace{}</code>.
+      </li>
+      <li>
+        <strong>Lists</strong>
+        Create bullet lists with <code>itemize</code> and numbered lists with <code>enumerate</code>.
+        Customise bullet symbols and indentation.
+      </li>
+      <li>
+        <strong>Tables and columns</strong>
+        Use <code>tabular</code> for side-by-side content and <code>minipage</code> to create
+        multi-column layouts — essential for two-column CV designs.
+      </li>
+      <li>
+        <strong>Packages</strong>
+        Load <code>geometry</code> to control margins, <code>hyperref</code> to add clickable links,
+        and <code>fontenc</code> / <code>inputenc</code> for proper character encoding.
+      </li>
+      <li>
+        <strong>Cover letter conventions</strong>
+        Use the <code>letter</code> document class with <code>\opening{}</code>, <code>\closing{}</code>,
+        and <code>\signature{}</code> — or recreate the same structure manually in <code>article</code>
+        for full layout control.
+      </li>
+    </ul>
+  </section>
+
+  <hr class="divider"/>
+
+  <section id="templates">
+    <div class="section-label">Downloads</div>
+    <h2>The four templates</h2>
+    <p>Download any template and upload it to Overleaf: <strong>New Project → Upload Project</strong> (zip),
+    or <strong>New Project → Blank → paste the .tex source</strong>.</p>
+
+    <div class="template-grid">
+
+      <div class="template-card">
+        <h4>📄 Academic CV</h4>
+        <div class="template-meta">For PhD students, researchers, and academics</div>
+        <p>A clean single-column layout with sections for Education, Research Experience, Publications,
+        Teaching, and Skills. Uses manual sectioning with <code>\hrule</code> dividers — no packages
+        beyond the essentials. Teaches core document structure, <code>\hfill</code> for date alignment,
+        and nested <code>itemize</code> lists.</p>
+        <div class="tag-row">
+          <span class="tag">\documentclass{article}</span>
+          <span class="tag">geometry</span>
+          <span class="tag">\hrule</span>
+          <span class="tag">\hfill</span>
+          <span class="tag">itemize</span>
+        </div>
+        <a href="cv_academic.tex" download>⬇ Download cv_academic.tex</a>
+      </div>
+
+      <div class="template-card">
+        <h4>📄 Professional CV</h4>
+        <div class="template-meta">For working professionals and industry job seekers</div>
+        <p>A two-column layout using <code>minipage</code> environments — a sidebar for contact details
+        and skills, the main column for work experience and education. Teaches table-like layout without
+        actual tables, <code>\textsc</code> styling, and how <code>minipage</code> enables side-by-side
+        content.</p>
+        <div class="tag-row">
+          <span class="tag">minipage</span>
+          <span class="tag">\textsc</span>
+          <span class="tag">\vspace</span>
+          <span class="tag">\noindent</span>
+          <span class="tag">enumerate</span>
+        </div>
+        <a href="cv_professional.tex" download>⬇ Download cv_professional.tex</a>
+      </div>
+
+      <div class="template-card">
+        <h4>✉ Academic Cover Letter</h4>
+        <div class="template-meta">For academic positions, fellowships, and graduate school</div>
+        <p>Uses the <code>letter</code> document class — LaTeX's built-in class for formal correspondence.
+        Demonstrates <code>\address</code>, <code>\opening</code>, <code>\closing</code>, and
+        <code>\signature</code> commands. The <code>letter</code> class handles all spacing and
+        formatting conventions automatically.</p>
+        <div class="tag-row">
+          <span class="tag">\documentclass{letter}</span>
+          <span class="tag">\opening{}</span>
+          <span class="tag">\closing{}</span>
+          <span class="tag">\signature{}</span>
+          <span class="tag">\today</span>
+        </div>
+        <a href="cover_letter_academic.tex" download>⬇ Download cover_letter_academic.tex</a>
+      </div>
+
+      <div class="template-card">
+        <h4>✉ Professional Cover Letter</h4>
+        <div class="template-meta">For industry jobs, internships, and general applications</div>
+        <p>Uses the <code>article</code> class with fully manual letter formatting — giving you precise
+        control over every spacing decision. Teaches <code>\parskip</code>, <code>\parindent</code>,
+        <code>\raggedright</code>, and custom address-block layout using <code>\begin{flushright}</code>.
+        Great for understanding how LaTeX handles spacing.</p>
+        <div class="tag-row">
+          <span class="tag">\parskip</span>
+          <span class="tag">\parindent</span>
+          <span class="tag">flushright</span>
+          <span class="tag">\raggedright</span>
+          <span class="tag">setlength</span>
+        </div>
+        <a href="cover_letter_professional.tex" download>⬇ Download cover_letter_professional.tex</a>
+      </div>
+
+    </div>
+
+    <div class="callout go" style="margin-top: 20px;">
+      <span class="callout-icon">✅</span>
+      <p><strong>How to use on Overleaf:</strong> Download a .tex file → go to overleaf.com →
+      <strong>New Project → Blank Project</strong> → delete the default content → paste the
+      .tex file contents → click <strong>Recompile</strong>.</p>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <section id="commands">
+    <div class="section-label">Quick reference</div>
+    <h2>Essential LaTeX commands</h2>
+    <p>These are the commands you'll encounter and use across all four templates today.</p>
+
+    <pre><span class="comment">% Every LaTeX document follows this structure:</span>
+<span class="cmd">\documentclass</span><span class="brace">{</span><span class="arg">article</span><span class="brace">}</span>       <span class="comment">% choose a document class</span>
+<span class="cmd">\usepackage</span><span class="brace">{</span><span class="arg">geometry</span><span class="brace">}</span>        <span class="comment">% load extra features (packages)</span>
+<span class="cmd">\geometry</span><span class="brace">{</span><span class="arg">margin=1in</span><span class="brace">}</span>
+
+<span class="cmd">\begin</span><span class="brace">{</span><span class="arg">document</span><span class="brace">}</span>
+  Your content goes here.
+<span class="cmd">\end</span><span class="brace">{</span><span class="arg">document</span><span class="brace">}</span></pre>
+
+    <table class="cmd-table">
+      <thead>
+        <tr><th>Command</th><th>What it does</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>\textbf{text}</td><td>Makes text <strong>bold</strong></td></tr>
+        <tr><td>\textit{text}</td><td>Makes text <em>italic</em></td></tr>
+        <tr><td>\textsc{text}</td><td>Makes text in Small Caps</td></tr>
+        <tr><td>\underline{text}</td><td>Underlines text</td></tr>
+        <tr><td>\large, \Large, \small</td><td>Changes text size (relative to base font)</td></tr>
+        <tr><td>\section{Title}</td><td>Creates a numbered section heading</td></tr>
+        <tr><td>\section*{Title}</td><td>Section heading without a number (the * suppresses numbering)</td></tr>
+        <tr><td>\hfill</td><td>Pushes the next item to the right margin — used for date alignment</td></tr>
+        <tr><td>\vspace{10pt}</td><td>Adds 10 points of vertical space</td></tr>
+        <tr><td>\noindent</td><td>Prevents indentation at the start of a paragraph</td></tr>
+        <tr><td>\begin{itemize} \item … \end{itemize}</td><td>Bullet list</td></tr>
+        <tr><td>\begin{enumerate} \item … \end{enumerate}</td><td>Numbered list</td></tr>
+        <tr><td>\begin{minipage}[t]{0.5\textwidth} … \end{minipage}</td><td>A box that is half the text width — place two side by side for columns</td></tr>
+        <tr><td>\href{url}{text}</td><td>Clickable hyperlink (requires the hyperref package)</td></tr>
+        <tr><td>\today</td><td>Inserts today's date automatically</td></tr>
+        <tr><td>% this is a comment</td><td>Anything after % on a line is ignored by LaTeX</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout tip" style="margin-top: 16px;">
+      <span class="callout-icon">💡</span>
+      <p><strong>Special characters:</strong> Some characters mean something special to LaTeX.
+      Use <code>\%</code> for a percent sign, <code>\$</code> for a dollar sign, and
+      <code>\&amp;</code> for an ampersand — otherwise LaTeX misreads them as commands.</p>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <section id="resources">
+    <div class="section-label">Links</div>
+    <h2>Resources to keep</h2>
+    <div class="resource-grid">
+
+      <a class="resource-row" href="cv_academic.tex" download>
+        <div><h4>Academic CV Template</h4><p>Single-column · article class · sections, hfill, itemize</p></div>
+        <span class="resource-arrow">⬇</span>
+      </a>
+
+      <a class="resource-row" href="cv_professional.tex" download>
+        <div><h4>Professional CV Template</h4><p>Two-column · minipage · textsc, enumerate</p></div>
+        <span class="resource-arrow">⬇</span>
+      </a>
+
+      <a class="resource-row" href="cover_letter_academic.tex" download>
+        <div><h4>Academic Cover Letter Template</h4><p>letter class · opening, closing, signature</p></div>
+        <span class="resource-arrow">⬇</span>
+      </a>
+
+      <a class="resource-row" href="cover_letter_professional.tex" download>
+        <div><h4>Professional Cover Letter Template</h4><p>article class · parskip, flushright, manual layout</p></div>
+        <span class="resource-arrow">⬇</span>
+      </a>
+
+      <a class="resource-row" href="https://www.overleaf.com" target="_blank">
+        <div><h4>Overleaf</h4><p>Free browser-based LaTeX editor — start here</p></div>
+        <span class="resource-arrow">→</span>
+      </a>
+
+      <a class="resource-row" href="https://www.overleaf.com/latex/templates" target="_blank">
+        <div><h4>Overleaf Template Gallery</h4><p>Hundreds of free CV and cover letter templates to explore</p></div>
+        <span class="resource-arrow">→</span>
+      </a>
+
+      <a class="resource-row" href="https://learnlatex.org" target="_blank">
+        <div><h4>learnlatex.org</h4><p>Free, interactive LaTeX lessons — runs in your browser, no sign-up</p></div>
+        <span class="resource-arrow">→</span>
+      </a>
+
+      <a class="resource-row" href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes" target="_blank">
+        <div><h4>Learn LaTeX in 30 Minutes — Overleaf</h4><p>Official beginner guide from Overleaf</p></div>
+        <span class="resource-arrow">→</span>
+      </a>
+
+      <a class="resource-row" href="https://detexify.kirelabs.org" target="_blank">
+        <div><h4>Detexify</h4><p>Draw a symbol, find the LaTeX command — works for any character</p></div>
+        <span class="resource-arrow">→</span>
+      </a>
+
+      <a class="resource-row" href="https://tex.stackexchange.com" target="_blank">
+        <div><h4>TeX Stack Exchange</h4><p>The best Q&amp;A community for LaTeX questions — very beginner-friendly</p></div>
+        <span class="resource-arrow">→</span>
+      </a>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Workshop guide · UFH · April 14, 2025</p>
+</footer>
+
+<script>
+const navLinks = document.querySelectorAll('nav a');
+const sections = document.querySelectorAll('section');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 80) current = s.id;
+  });
+  navLinks.forEach(a => {
+    const active = a.getAttribute('href') === '#' + current;
+    a.style.color = active ? 'var(--ink)' : '';
+    a.style.borderColor = active ? 'var(--accent)' : 'transparent';
+  });
+});
+</script>
+
+</body>
+</html>
