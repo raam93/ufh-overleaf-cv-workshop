@@ -51,11 +51,10 @@
 % ------ HEADER ------
 % \begin{center} ... \end{center} centres everything inside.
 \begin{center}
-  {\LARGE \textbf{Your Full Name}}    \\[4pt]
+  {\LARGE \textbf{Your Full Name}} \\[4pt]
   % \\ starts a new line. [4pt] adds 4 points of extra space below.
-
-  Department of [Your Department]  \\
-  [University Name], [City, Country] \\[6pt]
+  Department of Your Department \\
+  University Name, City, Country \\[6pt]
 
   % \href{url}{display text} makes a clickable link (from hyperref package).
   \href{mailto:your.email@university.edu}{your.email@university.edu}
@@ -71,9 +70,8 @@
 % ------ RESEARCH INTERESTS ------
 \cvsection{Research Interests}
 
-[Write 1–2 sentences describing your main research area and questions.
-For example: My research focuses on human–computer interaction and accessibility,
-with an emphasis on designing inclusive interfaces for users with motor impairments.]
+Write 1--2 sentences describing your main research area and questions.
+For example: I'm broadly interested in supporting the safe and responsible use of AI by analyzing the norms, tensions, and subtle technical assumptions that underlie AI system development.
 
 
 % ------ EDUCATION ------
@@ -81,47 +79,50 @@ with an emphasis on designing inclusive interfaces for users with motor impairme
 
 % \textbf makes text bold. \textit makes it italic.
 % \hfill pushes the date all the way to the right margin.
-\textbf{Doctor of Philosophy in [Your Field]} \hfill \textit{Expected [Month Year]} \\
-[University Name], [City, Country] \\
-Thesis: \textit{``[Your Thesis Title]''} \\
-Supervisor: Prof.\ [Supervisor Name]
+\textbf{Doctor of Philosophy in Your Field} \hfill \textit{Expected Month Year} \\{}
+University Name, City, Country \\
+Thesis: \textit{``Your Thesis Title''} \\
+Supervisor: Prof.\ Supervisor Name
 
 \vspace{8pt}
 
-\textbf{Master of Science in [Your Field]} \hfill \textit{[Month Year]} \\
-[University Name], [City, Country] \\
-Thesis: \textit{``[Thesis Title]''} \quad GPA: [X.X / 4.0]
+\textbf{Master of Science in Your Field} \hfill \textit{Month Year} \\{}
+University Name, City, Country \\
+Thesis: \textit{``Thesis Title''} \quad GPA: X.X / 4.0
 
 \vspace{8pt}
 
-\textbf{Bachelor of Science in [Your Field]} \hfill \textit{[Month Year]} \\
-[University Name], [City, Country] \quad GPA: [X.X / 4.0]
+\textbf{Bachelor of Science in Your Field} \hfill \textit{Month Year} \\{}
+University Name, City, Country \quad GPA: X.X / 4.0
 
 
 % ------ RESEARCH EXPERIENCE ------
 \cvsection{Research Experience}
 
-\textbf{Graduate Research Assistant} \hfill \textit{[Month Year] -- Present} \\
-\textit{[Lab / Group Name]}, [University Name] \\
-Supervisor: Prof.\ [Name]
+\textbf{Graduate Research Assistant} \hfill \textit{Month Year -- Present} \\
+\textit{Lab / Group Name}, University Name \\
+Supervisor: Prof.\ Name
 
 % itemize creates a bullet list. Each \item is one bullet point.
+% Note: when bullet text starts with [, wrap it in braces: \item {[text]}
+% otherwise LaTeX reads [...] as a custom bullet label.
+
 \begin{itemize}
   \setlength{\itemsep}{2pt}   % reduces space between items
-  \item [Describe your main research contribution or project in one sentence.]
-  \item [Describe a method, dataset, or tool you developed or used.]
-  \item [Mention any collaboration, publication outcome, or result.]
+  \item Describe your main research contribution or project in one sentence.
+  \item Describe a method, dataset, or tool you developed or used.
+  \item Mention any collaboration, publication outcome, or result.
 \end{itemize}
 
 \vspace{8pt}
 
-\textbf{Research Intern} \hfill \textit{[Month Year] -- [Month Year]} \\
-\textit{[Organisation / Lab]}, [City, Country]
+\textbf{Research Intern} \hfill \textit{Month Year -- Month Year} \\
+\textit{Organisation / Lab}, City, Country
 
 \begin{itemize}
   \setlength{\itemsep}{2pt}
-  \item [Describe the project you worked on.]
-  \item [Describe your contribution and any results.]
+  \item Describe the project you worked on.
+  \item Describe your contribution and any results.
 \end{itemize}
 
 
@@ -133,13 +134,13 @@ Supervisor: Prof.\ [Name]
   \setlength{\itemsep}{4pt}
 
   \item \textbf{Your Name}, Co-Author Name, and Co-Author Name.
-        ``\textit{[Title of Your Paper]}.''
-        In \textit{[Conference or Journal Name]}, [Year].
+        ``\textit{Title of Your Paper}.''
+        In \textit{Conference or Journal Name}, Year.
         \href{https://doi.org/xxxxx}{doi:xxxxx}
 
   \item \textbf{Your Name} and Co-Author Name.
-        ``\textit{[Title of Second Paper]}.''
-        In \textit{[Journal Name]}, Vol.\ [X], No.\ [Y], [Year].
+        ``\textit{Title of Second Paper}.''
+        In \textit{Journal Name}, Vol.\ X, No.\ Y, Year.
 
 \end{enumerate}
 
@@ -147,25 +148,25 @@ Supervisor: Prof.\ [Name]
 % ------ TEACHING ------
 \cvsection{Teaching}
 
-\textbf{Teaching Assistant} --- [Course Name] ([Course Code]) \hfill \textit{[Year]} \\
-[University Name]
+\textbf{Teaching Assistant} --- Course Name (Course Code) \hfill \textit{Year} \\{}
+University Name
 
 \begin{itemize}
   \setlength{\itemsep}{2pt}
-  \item Led weekly tutorial sessions of [N] students.
+  \item Led weekly tutorial sessions of N students.
   \item Graded assignments and provided written feedback.
 \end{itemize}
 
 
-% ------ AWARDS & HONOURS ------
+% ------ AWARDS \& HONOURS ------
 \cvsection{Awards \& Honours}
 
 % You can also use itemize for a simple list without descriptions.
 \begin{itemize}
   \setlength{\itemsep}{2pt}
-  \item \textbf{[Award Name]} \hfill \textit{[Year]}
-  \item \textbf{[Scholarship Name]}, [Awarding Body] \hfill \textit{[Year]}
-  \item \textbf{[Fellowship Name]} \hfill \textit{[Year]}
+  \item \textbf{Award Name} \hfill \textit{Year}
+  \item \textbf{Scholarship Name}, Awarding Body \hfill \textit{Year}
+  \item \textbf{Fellowship Name} \hfill \textit{Year}
 \end{itemize}
 
 
@@ -184,7 +185,7 @@ Supervisor: Prof.\ [Name]
 
   \item \textbf{Tools \& Frameworks:} PyTorch, TensorFlow, Git, Docker, \LaTeX
 
-  \item \textbf{Languages:} English (fluent), [Other Language] (native)
+  \item \textbf{Languages:} English (fluent), Other Language (native)
 
 \end{itemize}
 
